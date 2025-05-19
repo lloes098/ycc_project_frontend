@@ -1,0 +1,54 @@
+.splash-bg {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #f3f7fc 0%, #bcd3f7 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 100dvh;
+}
+
+.splash-top-icons {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  color: #b0b0b0;
+  z-index: 2;
+}
+
+.splash-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splash-logo {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 32px;
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  background: #2563eb;
+  object-fit: contain;
+}
+
+.splash-korean {
+  color: #1a56b3;
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.splash-title {
+  color: #1657c2;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
