@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../../components/BackButton';
 import BottomNavigation from '../../components/BottomNavigation';
 
 const PageContainer = styled.div`
@@ -12,15 +13,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 30px;
-`;
-
-const BackButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 0;
-  margin-right: 16px;
+  gap: 8px;
 `;
 
 const Title = styled.h1`
@@ -77,9 +70,7 @@ const CopyButton = styled.button`
 `;
 
 const Address: React.FC = () => {
-  const navigate = useNavigate();
   const [copySuccess, setCopySuccess] = useState(false);
-
   const address = "인천 연수구 송도과학로 85 {동} {호수}";
 
   const handleCopy = async () => {
@@ -96,7 +87,7 @@ const Address: React.FC = () => {
     <>
       <PageContainer>
         <Header>
-          <BackButton onClick={() => navigate(-1)}>←</BackButton>
+          <BackButton />
           <Title>주소</Title>
         </Header>
         
