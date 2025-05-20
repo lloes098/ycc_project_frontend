@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import BackButton from '../../components/BackButton';
 import BottomNavigation from '../../components/BottomNavigation';
 
 const PageContainer = styled.div`
@@ -12,15 +13,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-`;
-
-const BackButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 0;
-  margin-right: 16px;
+  gap: 8px;
 `;
 
 const Title = styled.h1`
@@ -90,7 +83,6 @@ const LegendColor = styled.div<{ color: string }>`
 `;
 
 const Map: React.FC = () => {
-  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('신촌');
 
   const legendItems = [
@@ -104,7 +96,7 @@ const Map: React.FC = () => {
     <>
       <PageContainer>
         <Header>
-          <BackButton onClick={() => navigate(-1)}>←</BackButton>
+          <BackButton />
           <Title>기숙사 지도</Title>
         </Header>
 
