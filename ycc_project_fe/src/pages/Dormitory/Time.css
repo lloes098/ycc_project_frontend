@@ -1,0 +1,147 @@
+.time-container {
+  min-height: 100vh;
+  background-color: #F8F9FA;
+  padding-bottom: 20px;
+}
+
+.time-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.back-button {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.time-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+.tab-container {
+  display: flex;
+  background-color: white;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.tab {
+  flex: 1;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  color: #666666;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.tab.active {
+  color: #0066FF;
+  font-weight: 600;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0066FF;
+}
+
+.select-container {
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.select-box {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 16px;
+  color: #1A1A1A;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.select-box:disabled {
+  background-color: #F8F9FA;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.time-list {
+  padding: 0 20px;
+}
+
+.time-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #E5E5E5;
+  transition: all 0.2s ease;
+}
+
+.time-item.selected {
+  border-color: #0066FF;
+  background-color: #F5F9FF;
+}
+
+.building-info {
+  flex: 1;
+}
+
+.building-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A1A1A;
+  margin-bottom: 4px;
+}
+
+.building-department {
+  font-size: 14px;
+  color: #666666;
+}
+
+.estimated-time {
+  text-align: right;
+  color: #666666;
+  font-size: 14px;
+}
+
+.time {
+  display: block;
+  color: #0066FF;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 4px;
+} 
