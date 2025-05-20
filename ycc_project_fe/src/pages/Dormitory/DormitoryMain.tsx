@@ -80,7 +80,7 @@ const DormitoryMain: React.FC = () => {
       icon: "📍",
       title: "편의시설",
       description: "주요 편의 시설 정보를 조회해요",
-      path: "/facilities"
+      path: "/facility"
     },
     {
       icon: "⏰",
