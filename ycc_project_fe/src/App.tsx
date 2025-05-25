@@ -13,6 +13,7 @@ import Friends from './pages/Dormitory/Friends';
 import Matching from './pages/Dormitory/Matching';
 import Chat from './pages/Dormitory/Chat';
 import Location from './pages/Dormitory/Location';
+import Packing from './pages/Dormitory/Packing'
 import './App.css';
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
         <Route path="/matching" element={<Matching />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/location" element={<Location />} />
+
+        <Route path="/checklist" element={<Packing />} />
       </Routes>
     </Router>
   );

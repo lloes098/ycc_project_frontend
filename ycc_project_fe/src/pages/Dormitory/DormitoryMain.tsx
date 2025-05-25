@@ -86,7 +86,7 @@ const DormitoryMain: React.FC = () => {
     },
     {
       icon: "📦",
-      title: "짐 준비",
+      title: "비품 준비",
       description: "필수 준비물을 확인해요",
       path: "/checklist"
     }
