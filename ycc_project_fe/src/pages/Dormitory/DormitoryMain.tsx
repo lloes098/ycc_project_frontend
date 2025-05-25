@@ -8,6 +8,7 @@ const PageContainer = styled.div`
   max-width: 768px;
   margin: 0 auto;
   padding-bottom: 80px; /* Add padding for BottomNavigation */
+
 `;
 
 const Title = styled.h1`
@@ -43,6 +44,10 @@ const Card = styled.div`
   }
 `;
 
+const InfoCard = styled(Card)`
+  cursor: default;
+`;
+
 const CardIcon = styled.div`
   font-size: 24px;
   margin-bottom: 12px;
@@ -63,7 +68,31 @@ const CardDescription = styled.p`
 const DormitoryMain: React.FC = () => {
   const navigate = useNavigate();
 
-  const services = [
+  // 👉 이 값은 추후 백엔드에서 받아오게 변경
+  const isAssigned = false;
+
+  const roommateServices = [
+    {
+      icon: "💬",
+      title: "채팅",
+      description: "매칭된 룸메와 대화해요",
+      path: "/chat"
+    },
+    {
+      icon: "🛏️",
+      title: "위치 선정",
+      description: "침대·책상 위치를 결정해요",
+      path: "/location"
+    },
+    {
+      icon: "📦",
+      title: "짐 준비",
+      description: "필수 준비물을 확인해요",
+      path: "/checklist"
+    }
+  ];
+
+  const dormitoryServices = [
     {
       icon: "📦",
       title: "주소",
@@ -106,9 +135,43 @@ const DormitoryMain: React.FC = () => {
     <>
       <PageContainer>
         <Title>기숙사 생활 도우미</Title>
+
+        {/* 기숙사 배정 여부에 따른 상단 안내 카드 */}
+        {isAssigned ? (
+          <InfoCard>
+            <CardTitle>내 기숙사</CardTitle>
+            <CardDescription>
+              호실 유형: 무악학사<br />
+              동: A동<br />
+              호수: 620호
+            </CardDescription>
+          </InfoCard>
+        ) : (
+          <InfoCard>
+            <CardTitle>기숙사가 아직 배정되지 않았어요</CardTitle>
+            <CardDescription>
+              Yonmate를 이용하기까지 조금만 기다려주세요 :)<br />
+              기숙사 배정까지 남은 시간: 00일 00시간 00분
+            </CardDescription>
+          </InfoCard>
+        )}
+
+        {/*  룸메이트 공간 */}
+        <SubTitle>룸메이트 공간</SubTitle>
+        <GridContainer>
+          {roommateServices.map((service, index) => (
+            <Card key={index} onClick={() => navigate(service.path)}>
+              <CardIcon>{service.icon}</CardIcon>
+              <CardTitle>{service.title}</CardTitle>
+              <CardDescription>{service.description}</CardDescription>
+            </Card>
+          ))}
+        </GridContainer>
+
+        {/*  기숙사 도우미 */}
         <SubTitle>기숙사 도우미</SubTitle>
         <GridContainer>
-          {services.map((service, index) => (
+          {dormitoryServices.map((service, index) => (
             <Card key={index} onClick={() => navigate(service.path)}>
               <CardIcon>{service.icon}</CardIcon>
               <CardTitle>{service.title}</CardTitle>
@@ -122,4 +185,4 @@ const DormitoryMain: React.FC = () => {
   );
 };
 
-export default DormitoryMain; 
+export default DormitoryMain;

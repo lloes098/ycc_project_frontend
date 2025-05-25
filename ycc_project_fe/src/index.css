@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* 스크롤이 안되는 이슈가 있어서 추가 */
+
+html, body, #root {
+  height: 100%;
+  overflow-y: auto;
+}
+
