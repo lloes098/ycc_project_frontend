@@ -11,6 +11,7 @@ import Time from './pages/Dormitory/Time';
 import Preview from './pages/Dormitory/Preview';
 import Friends from './pages/Dormitory/Friends';
 import Matching from './pages/Dormitory/Matching';
+import Chat from './pages/Dormitory/Chat';
 import './App.css';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/preview" element={<Preview />} />
         <Route path="/friends" element={<Friends />} />
         <Route path="/matching" element={<Matching />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </Router>
   );
