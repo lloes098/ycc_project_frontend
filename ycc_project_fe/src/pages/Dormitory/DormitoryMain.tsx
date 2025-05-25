@@ -11,6 +11,28 @@ const PageContainer = styled.div`
 
 `;
 
+const SectionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 16px 8px;
+  font-weight: bold;
+  font-size: 16px;
+`;
+
+const ClickableRow = styled.div`
+  display: flex;
+  
+  align-items: center;
+  gap: 6px;
+  margin: 24px 16px 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  width: fit-content;
+`;
+
+
 const Title = styled.h1`
   text-align: center;
   margin: 20px 0 40px;
@@ -29,6 +51,11 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-bottom: 60px;
+`;
+
+const Arrow = styled.span`
+  font-size: 25px;
+  color: #333;
 `;
 
 const Card = styled.div`
@@ -157,7 +184,12 @@ const DormitoryMain: React.FC = () => {
         )}
 
         {/*  룸메이트 공간 */}
-        <SubTitle>룸메이트 공간</SubTitle>
+        <ClickableRow onClick={() => navigate('/roommate')}>
+          <span>룸메이트 공간</span>
+          <Arrow>›</Arrow>
+        </ClickableRow>
+
+
         <GridContainer>
           {roommateServices.map((service, index) => (
             <Card key={index} onClick={() => navigate(service.path)}>

@@ -14,6 +14,7 @@ import Matching from './pages/Dormitory/Matching';
 import Chat from './pages/Dormitory/Chat';
 import Location from './pages/Dormitory/Location';
 import Packing from './pages/Dormitory/Packing'
+import RoommateSpace from './pages/Dormitory/RoommateSpace';
 import './App.css';
 
 function App() {
@@ -33,8 +34,9 @@ function App() {
         <Route path="/matching" element={<Matching />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/location" element={<Location />} />
-
         <Route path="/checklist" element={<Packing />} />
+        <Route path="/roommate" element={<RoommateSpace />} />
+      
       </Routes>
     </Router>
   );
