@@ -40,7 +40,8 @@ const BottomNavigation: React.FC = () => {
   const navItems = [
     { icon: '🏠', label: '홈', path: '/' },
     { icon: '🔍', label: '매칭', path: '/matching' },
-    { icon: '🏢', label: '도우미', path: '/dormitory' },
+    { icon: '🏢', label: '룸메공간', path: '/roommate' },
+    { icon: '🧭', label: '도우미', path: '/dormitory' },
     { icon: '👤', label: '마이', path: '/mypage' },
   ];
 
