@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../components/BottomNavigation';
+import BackButton from '../../components/BackButton';
 
 const PageContainer = styled.div`
   padding: 20px;
@@ -105,6 +106,7 @@ const HelperMain: React.FC = () => {
     <>
       <PageContainer>
         <Title>기숙사 생활 도우미</Title>
+        <BackButton />
         <SubTitle>기숙사 도우미</SubTitle>
 
         <GridContainer>
