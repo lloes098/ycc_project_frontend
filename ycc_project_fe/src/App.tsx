@@ -17,6 +17,7 @@ import Packing from './pages/Dormitory/Packing'
 import RoommateSpace from './pages/Dormitory/RoommateSpace';
 import Mypage from './pages/Dormitory/MyPage'
 import './App.css';
+import HelperMain from './pages/Dormitory/HelperMain';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<SplashScreen />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dormitory" element={<DormitoryMain />} />
+        <Route path="/main" element={<DormitoryMain />} />
         <Route path="/address" element={<Address />} />
         <Route path="/map" element={<Map />} />
         <Route path="/facility" element={<Facility />} />
@@ -38,6 +39,7 @@ function App() {
         <Route path="/checklist" element={<Packing />} />
         <Route path="/roommate" element={<RoommateSpace />} />
         <Route path="/mypage" element={<Mypage />} />
+        <Route path="/dormitory" element={<HelperMain />} />
       
       </Routes>
     </Router>

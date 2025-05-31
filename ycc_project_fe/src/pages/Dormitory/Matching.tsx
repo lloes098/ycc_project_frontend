@@ -2,11 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import BackButton from '../../components/BackButton';
+import BottomNavigation from '../../components/BottomNavigation';
 
 const Container = styled.div`
   padding: 20px;
   background-color: #f8f9fa;
   min-height: 100vh;
+  padding-bottom: 100px; // ✅ BottomNavigation 안 가리도록 패딩 추가
 `;
 
 const Header = styled.div`
@@ -68,7 +70,7 @@ const LoadingSpinner = styled.div`
   border-top: 3px solid #0066ff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  
+
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -99,36 +101,40 @@ const MatchingButton = styled.button`
 
 const Matching: React.FC = () => {
   return (
-    <Container>
-      <Header>
-        <BackButton />
-        <Title>룸메이트 매칭</Title>
-      </Header>
+    <>
+      <Container>
+        <Header>
+          <BackButton />
+          <Title>룸메이트 매칭</Title>
+        </Header>
 
-      <Section>
-        <SectionTitle>내 기숙사</SectionTitle>
-        <InfoGrid>
-          <Label>호실 유형</Label>
-          <Value>무악학사</Value>
-          
-          <Label>동</Label>
-          <Value>A동</Value>
-          
-          <Label>호수</Label>
-          <Value>620호</Value>
-        </InfoGrid>
-      </Section>
+        <Section>
+          <SectionTitle>내 기숙사</SectionTitle>
+          <InfoGrid>
+            <Label>호실 유형</Label>
+            <Value>무악학사</Value>
 
-      <LoadingContainer>
-        <LoadingSpinner />
-        <LoadingText>룸메이트 매칭을 기다리고 있어요!</LoadingText>
-      </LoadingContainer>
+            <Label>동</Label>
+            <Value>A동</Value>
 
-      <MatchingButton onClick={() => console.log('매칭 알림 신청')}>
-        매칭 완료 알림받기
-      </MatchingButton>
-    </Container>
+            <Label>호수</Label>
+            <Value>620호</Value>
+          </InfoGrid>
+        </Section>
+
+        <LoadingContainer>
+          <LoadingSpinner />
+          <LoadingText>룸메이트 매칭을 기다리고 있어요!</LoadingText>
+        </LoadingContainer>
+
+        <MatchingButton onClick={() => console.log('매칭 알림 신청')}>
+          매칭 완료 알림받기
+        </MatchingButton>
+      </Container>
+
+      <BottomNavigation />
+    </>
   );
 };
 
-export default Matching; 
+export default Matching;

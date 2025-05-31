@@ -17,6 +17,8 @@ const NavContainer = styled.nav`
 
 const NavItem = styled.div<{ active: boolean }>`
   display: flex;
+  user-select: none;
+
   flex-direction: column;
   align-items: center;
   cursor: pointer;
@@ -26,6 +28,8 @@ const NavItem = styled.div<{ active: boolean }>`
 
 const Icon = styled.div`
   font-size: 20px;
+  user-select: none;
+
   margin-bottom: 4px;
 `;
 
@@ -38,7 +42,7 @@ const BottomNavigation: React.FC = () => {
   const location = useLocation();
 
   const navItems = [
-    { icon: '🏠', label: '홈', path: '/' },
+    { icon: '🏠', label: '홈', path: '/main' },
     { icon: '🔍', label: '매칭', path: '/matching' },
     { icon: '🏢', label: '룸메공간', path: '/roommate' },
     { icon: '🧭', label: '도우미', path: '/dormitory' },

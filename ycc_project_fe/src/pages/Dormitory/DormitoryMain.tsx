@@ -6,6 +6,8 @@ import BottomNavigation from '../../components/BottomNavigation';
 const PageContainer = styled.div`
   padding: 20px;
   max-width: 768px;
+  user-select: none;
+
   margin: 0 auto;
   padding-bottom: 80px; /* Add padding for BottomNavigation */
 
@@ -64,6 +66,8 @@ const Card = styled.div`
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  user-select: none;
+
   transition: transform 0.2s;
 
   &:hover {
@@ -201,7 +205,11 @@ const DormitoryMain: React.FC = () => {
         </GridContainer>
 
         {/*  기숙사 도우미 */}
-        <SubTitle>기숙사 도우미</SubTitle>
+        <ClickableRow onClick={() => navigate('/dormitory')}>
+          <span>기숙사 도우미</span>
+          <Arrow>›</Arrow>
+        </ClickableRow>
+
         <GridContainer>
           {dormitoryServices.map((service, index) => (
             <Card key={index} onClick={() => navigate(service.path)}>
