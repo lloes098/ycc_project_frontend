@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import BackButton from '../../components/BackButton';
@@ -116,6 +116,9 @@ const ToggleTestButton = styled.button`
 
 const Matching: React.FC = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0); // 👈 여기 추가
+  }, []);
   const [isMatched, setIsMatched] = useState(false);
 
   const roommates = [
