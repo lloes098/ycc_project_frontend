@@ -10,6 +10,7 @@ const StyledBackButton = styled.span`
   display: flex;
   align-items: center;
   background: none;
+  user-select: none;
   border: none;
 
   &:hover {

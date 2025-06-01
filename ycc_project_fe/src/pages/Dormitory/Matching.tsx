@@ -6,6 +6,7 @@ import BottomNavigation from '../../components/BottomNavigation';
 
 const Container = styled.div`
   padding: 20px;
+  user-select: none;
   background-color: #f8f9fa;
   min-height: 100vh;
   padding-bottom: 100px; // ✅ BottomNavigation 안 가리도록 패딩 추가
@@ -14,6 +15,7 @@ const Container = styled.div`
 const Header = styled.div`
   display: flex;
   align-items: center;
+  user-select: none;
   margin-bottom: 24px;
   gap: 8px;
 `;
@@ -43,6 +45,7 @@ const InfoGrid = styled.div`
   grid-template-columns: auto 1fr;
   gap: 12px;
   font-size: 16px;
+  user-select: none;
 `;
 
 const Label = styled.span`

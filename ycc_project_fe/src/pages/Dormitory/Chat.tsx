@@ -14,6 +14,7 @@ const PageContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   max-width: 768px;
+  user-select: none;
   margin: 0 auto;
   padding-bottom: 60px; /* for BottomNavigation */
 `;
@@ -24,6 +25,7 @@ const Header = styled.div`
   font-size: 18px;
   border-bottom: 1px solid #ddd;
   display: flex;
+  user-select: none;
   align-items: center;
 `;
 

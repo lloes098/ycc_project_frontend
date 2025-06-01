@@ -5,6 +5,7 @@ import BottomNavigation from '../../components/BottomNavigation';
 
 const PageContainer = styled.div`
   padding: 20px;
+  user-select: none;
   padding-bottom: 80px;
 `;
 
@@ -12,6 +13,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  user-select: none;
 `;
 
 const BackButton = styled.button`
