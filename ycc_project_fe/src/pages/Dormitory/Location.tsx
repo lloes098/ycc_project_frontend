@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../components/BottomNavigation';
 import LadderRenderer from '../../components/LadderRenderer';
+import BackButton from '../../components/BackButton';
 
 type Assignment = {
   userId: string;
@@ -28,6 +29,7 @@ const PageContainer = styled.div`
 const Header = styled.div`
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   padding: 16px;
   font-size: 18px;
   user-select: none;
@@ -41,6 +43,16 @@ const BackButton = styled.button`
   user-select: none;
   border: none;
   cursor: pointer;
+=======
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+  gap: 12px;
+`;
+
+const HeaderTitle = styled.span`
+  font-size: 18px;
+  font-weight: 600;
+>>>>>>> main
 `;
 
 const TabBar = styled.div`
@@ -162,8 +174,8 @@ const Location: React.FC = () => {
     <>
       <PageContainer>
         <Header>
-          <BackButton onClick={() => navigate(-1)}>←</BackButton>
-          위치 선정
+          <BackButton />
+          <HeaderTitle>위치 선정</HeaderTitle>
         </Header>
 
         <TabBar>

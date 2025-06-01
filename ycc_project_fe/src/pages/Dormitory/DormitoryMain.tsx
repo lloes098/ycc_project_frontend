@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../components/BottomNavigation';
+import BackButton from '../../components/BackButton';
 
 const PageContainer = styled.div`
   padding: 20px;
@@ -24,7 +25,6 @@ const SectionHeader = styled.div`
 
 const ClickableRow = styled.div`
   display: flex;
-  
   align-items: center;
   gap: 6px;
   margin: 24px 16px 8px;
@@ -32,14 +32,22 @@ const ClickableRow = styled.div`
   font-size: 16px;
   cursor: pointer;
   width: fit-content;
+
+  &::after {
+    content: '›';
+    font-size: 24px;
+    margin-left: 4px;
+    line-height: 1;
+  }
 `;
 
-
 const Title = styled.h1`
-  text-align: center;
-  margin: 20px 0 40px;
+  text-align: left;
+  margin: 0;
+  padding: 20px;
   font-size: 24px;
   font-weight: bold;
+  color: #0053CC;
 `;
 
 const SubTitle = styled.h2`
@@ -53,11 +61,6 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-bottom: 60px;
-`;
-
-const Arrow = styled.span`
-  font-size: 25px;
-  color: #333;
 `;
 
 const Card = styled.div`
@@ -116,7 +119,7 @@ const DormitoryMain: React.FC = () => {
       path: "/location"
     },
     {
-      icon: "📦",
+      icon: "🧳",
       title: "비품 준비",
       description: "필수 준비물을 확인해요",
       path: "/checklist"
@@ -143,13 +146,13 @@ const DormitoryMain: React.FC = () => {
       path: "/facility"
     },
     {
-      icon: "⏰",
+      icon: "🕖",
       title: "소요시간",
       description: "강의실까지 예상 소요시간을 조회해요",
       path: "/time"
     },
     {
-      icon: "📝",
+      icon: "🚪",
       title: "방 미리보기",
       description: "미리 내 방을 알아봐요",
       path: "/preview"
@@ -165,7 +168,7 @@ const DormitoryMain: React.FC = () => {
   return (
     <>
       <PageContainer>
-        <Title>기숙사 생활 도우미</Title>
+        <Title>Yonmate</Title>
 
         {/* 기숙사 배정 여부에 따른 상단 안내 카드 */}
         {isAssigned ? (
@@ -190,7 +193,6 @@ const DormitoryMain: React.FC = () => {
         {/*  룸메이트 공간 */}
         <ClickableRow onClick={() => navigate('/roommate')}>
           <span>룸메이트 공간</span>
-          <Arrow>›</Arrow>
         </ClickableRow>
 
 
@@ -207,7 +209,6 @@ const DormitoryMain: React.FC = () => {
         {/*  기숙사 도우미 */}
         <ClickableRow onClick={() => navigate('/dormitory')}>
           <span>기숙사 도우미</span>
-          <Arrow>›</Arrow>
         </ClickableRow>
 
         <GridContainer>
