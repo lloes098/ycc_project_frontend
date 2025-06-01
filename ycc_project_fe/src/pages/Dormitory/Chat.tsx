@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../components/BottomNavigation';
@@ -17,7 +17,7 @@ const PageContainer = styled.div`
   max-width: 768px;
   user-select: none;
   margin: 0 auto;
-  padding-bottom: 60px; /* for BottomNavigation */
+  padding-bottom: 60px;
 `;
 
 const Header = styled.div`
@@ -49,6 +49,13 @@ const ChatBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  // ✅ 스크롤바 안 보이게
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
 `;
 
 const MessageBubble = styled.div<{ sender: 'me' | 'roommate' }>`
@@ -62,10 +69,19 @@ const MessageBubble = styled.div<{ sender: 'me' | 'roommate' }>`
 `;
 
 const InputWrapper = styled.div`
-  display: flex;
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  max-width: 768px;
+  margin: 0 auto;
   padding: 12px 16px;
+  background: white;
   border-top: 1px solid #ddd;
-  background-color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
 `;
 
 const TextInput = styled.input`
@@ -101,6 +117,7 @@ const Chat: React.FC = () => {
   ]);
 
   const [input, setInput] = useState('');
+  const bottomRef = useRef<HTMLDivElement | null>(null);
 
   const handleSend = () => {
     if (input.trim() === '') return;
@@ -111,9 +128,14 @@ const Chat: React.FC = () => {
       content: input.trim(),
     };
 
-    setMessages([...messages, newMessage]);
+    setMessages((prev) => [...prev, newMessage]);
     setInput('');
   };
+
+  // ✅ 메시지 추가될 때마다 자동 스크롤
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   return (
     <>
@@ -135,6 +157,7 @@ const Chat: React.FC = () => {
               {msg.content}
             </MessageBubble>
           ))}
+          <div ref={bottomRef} /> {/* ✅ 항상 아래로 스크롤 */}
         </ChatBox>
 
         <InputWrapper>
@@ -148,6 +171,7 @@ const Chat: React.FC = () => {
           <SendButton onClick={handleSend}>전송</SendButton>
         </InputWrapper>
       </PageContainer>
+
       <BottomNavigation />
     </>
   );

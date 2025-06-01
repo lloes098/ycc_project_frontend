@@ -29,21 +29,6 @@ const PageContainer = styled.div`
 const Header = styled.div`
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-  padding: 16px;
-  font-size: 18px;
-  user-select: none;
-  font-weight: bold;
-`;
-
-const BackButton = styled.button`
-  margin-right: 12px;
-  font-size: 20px;
-  background: none;
-  user-select: none;
-  border: none;
-  cursor: pointer;
-=======
   padding: 8px 16px;
   border-bottom: 1px solid #ddd;
   gap: 12px;
@@ -52,7 +37,6 @@ const BackButton = styled.button`
 const HeaderTitle = styled.span`
   font-size: 18px;
   font-weight: 600;
->>>>>>> main
 `;
 
 const TabBar = styled.div`
