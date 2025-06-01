@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../components/BottomNavigation';
+import BackButton from '../../components/BackButton';
 
 type Message = {
   id: number;
@@ -19,20 +20,16 @@ const PageContainer = styled.div`
 `;
 
 const Header = styled.div`
-  padding: 16px;
-  font-weight: bold;
-  font-size: 18px;
-  border-bottom: 1px solid #ddd;
   display: flex;
   align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+  gap: 12px;
 `;
 
-const BackButton = styled.button`
-  margin-right: 12px;
-  font-size: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
+const HeaderTitle = styled.span`
+  font-size: 18px;
+  font-weight: 600;
 `;
 
 const InfoBox = styled.div`
@@ -120,8 +117,8 @@ const Chat: React.FC = () => {
     <>
       <PageContainer>
         <Header>
-          <BackButton onClick={() => navigate(-1)}>←</BackButton>
-          채팅
+          <BackButton />
+          <HeaderTitle>채팅</HeaderTitle>
         </Header>
 
         <InfoBox>

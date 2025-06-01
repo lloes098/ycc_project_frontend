@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../components/BottomNavigation';
+import BackButton from '../../components/BackButton';
 
 type Category = '생활용품' | '욕실용품' | '세탁용품' | '청소용품';
 type Status = '준비 전' | '준비 완료';
@@ -45,18 +46,16 @@ const PageContainer = styled.div`
 `;
 
 const Header = styled.div`
-  padding: 16px;
-  font-weight: bold;
-  font-size: 18px;
-  border-bottom: 1px solid #ddd;
   display: flex;
   align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+  gap: 12px;
 `;
 
-const Title = styled.h1`
-  padding: 16px;
-  font-size: 20px;
-  font-weight: bold;
+const HeaderTitle = styled.span`
+  font-size: 18px;
+  font-weight: 600;
 `;
 
 const TabRow = styled.div`
@@ -89,14 +88,6 @@ const ItemCard = styled.div`
   margin-top: 10px;
   border-radius: 10px;
   border: 1px solid #ddd;
-  cursor: pointer;
-`;
-
-const BackButton = styled.button`
-  margin-right: 12px;
-  font-size: 20px;
-  background: none;
-  border: none;
   cursor: pointer;
 `;
 
@@ -135,8 +126,8 @@ const Packing: React.FC = () => {
     <>
       <PageContainer>
         <Header>
-          <BackButton onClick={() => navigate(-1)}>←</BackButton>
-          비품 준비
+          <BackButton />
+          <HeaderTitle>비품 준비</HeaderTitle>
         </Header>
         
 
