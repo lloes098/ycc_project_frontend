@@ -23,6 +23,7 @@ const PageContainer = styled.div`
   max-width: 768px;
   margin: 0 auto;
   padding-bottom: 100px;
+  user-select: none;
 `;
 
 const Header = styled.div`
@@ -56,10 +57,12 @@ const Tab = styled.button<{ active: boolean }>`
 
 const Box = styled.div`
   text-align: center;
+  user-select: none;
 `;
 
 const UserRow = styled.div`
   display: flex;
+  user-select: none;
   justify-content: space-around;
   margin: 12px 0;
 `;
@@ -72,6 +75,7 @@ const Name = styled.div<{ highlight?: boolean }>`
 const BedLabel = styled.div<{ selected?: boolean }>`
   border: 1px solid #ccc;
   border-radius: 6px;
+  user-select: none;
   padding: 8px 12px;
   font-size: 14px;
   background-color: ${({ selected }) => (selected ? '#e5f0ff' : '#f9f9f9')};

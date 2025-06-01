@@ -8,6 +8,7 @@ import BottomNavigation from '../../components/BottomNavigation';
 const PageContainer = styled.div`
   padding: 20px;
   padding-bottom: 80px;
+  user-select: none;
 `;
 
 const AddressHeader = styled.div`
@@ -15,17 +16,20 @@ const AddressHeader = styled.div`
   align-items: center;
   margin-bottom: 30px;
   gap: 8px;
+  user-select: none;
 `;
 
 const Title = styled.h1`
   font-size: 20px;
   font-weight: bold;
+  user-select: none;
 `;
 
 const AddressSection = styled.div`
   background: white;
   border-radius: 12px;
   padding: 20px;
+  user-select: none;
   margin-top: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 `;

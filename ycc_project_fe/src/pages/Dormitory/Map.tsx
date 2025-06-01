@@ -6,22 +6,24 @@ import BottomNavigation from '../../components/BottomNavigation';
 
 const PageContainer = styled.div`
   padding-bottom: 80px;
+  user-select: none;
 `;
 
 const WhiteContainer = styled.div`
   background-color: #fff;
   margin-bottom: 10px;
-`;
-
-const ContentContainer = styled.div`
-  background-color: #F5F5F5;
-  padding: 20px;
+  user-select: none;
 `;
 
 const TabContainer = styled.div`
   display: flex;
   margin-bottom: 0;
   border-bottom: 1px solid #e0e0e0;
+`;
+
+const ContentContainer = styled.div`
+  background-color: #F5F5F5;
+  padding: 20px;
 `;
 
 const Tab = styled.button<{ active: boolean }>`
