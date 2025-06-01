@@ -45,6 +45,16 @@ const PageContainer = styled.div`
   padding-bottom: 100px;
 `;
 
+const WhiteContainer = styled.div`
+  background-color: #fff;
+  margin-bottom: 10px;
+`;
+
+const ContentContainer = styled.div`
+  background-color: #F5F5F5;
+  padding: 20px;
+`;
+
 const Header = styled.div`
   display: flex;
   align-items: center;
@@ -61,7 +71,8 @@ const HeaderTitle = styled.span`
 const TabRow = styled.div`
   display: flex;
   overflow-x: auto;
-  padding: 0 16px;
+  padding: 12px 16px;
+  user-select: none;
 `;
 
 const Tab = styled.button<{ active: boolean }>`
@@ -83,12 +94,13 @@ const ItemCard = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fafafa;
+  background: #fff;
   padding: 12px 16px;
   margin-top: 10px;
   border-radius: 10px;
   border: 1px solid #ddd;
   cursor: pointer;
+  user-select: none;
 `;
 
 const CheckCircle = styled.div<{ checked: boolean }>`
@@ -125,39 +137,42 @@ const Packing: React.FC = () => {
   return (
     <>
       <PageContainer>
-        <Header>
-          <BackButton />
-          <HeaderTitle>비품 준비</HeaderTitle>
-        </Header>
-        
+        <WhiteContainer>
+          <Header>
+            <BackButton />
+            <HeaderTitle>비품 준비</HeaderTitle>
+          </Header>
 
-        {/* 상단 탭 */}
-        <TabRow>
-          {(['생활용품', '욕실용품', '세탁용품', '청소용품'] as Category[]).map((cat) => (
-            <Tab key={cat} active={category === cat} onClick={() => setCategory(cat)}>
-              {cat}
-            </Tab>
-          ))}
-        </TabRow>
+          {/* 상단 탭 */}
+          <TabRow>
+            {(['생활용품', '욕실용품', '세탁용품', '청소용품'] as Category[]).map((cat) => (
+              <Tab key={cat} active={category === cat} onClick={() => setCategory(cat)}>
+                {cat}
+              </Tab>
+            ))}
+          </TabRow>
 
-        {/* 상태 탭 */}
-        <TabRow style={{ marginTop: '10px' }}>
-          {(['준비 전', '준비 완료'] as Status[]).map((s) => (
-            <Tab key={s} active={statusFilter === s} onClick={() => setStatusFilter(s)}>
-              {s}
-            </Tab>
-          ))}
-        </TabRow>
+          {/* 상태 탭 */}
+          <TabRow style={{ marginTop: '0px' }}>
+            {(['준비 전', '준비 완료'] as Status[]).map((s) => (
+              <Tab key={s} active={statusFilter === s} onClick={() => setStatusFilter(s)}>
+                {s}
+              </Tab>
+            ))}
+          </TabRow>
+        </WhiteContainer>
 
-        {/* 아이템 리스트 */}
-        <ItemList>
-          {filtered.map((item) => (
-            <ItemCard key={item.id} onClick={() => toggleItem(item.id)}>
-              <span>{item.name}</span>
-              <CheckCircle checked={item.done}>{item.done ? '✓' : ''}</CheckCircle>
-            </ItemCard>
-          ))}
-        </ItemList>
+        <ContentContainer>
+          {/* 아이템 리스트 */}
+          <ItemList>
+            {filtered.map((item) => (
+              <ItemCard key={item.id} onClick={() => toggleItem(item.id)}>
+                <span>{item.name}</span>
+                <CheckCircle checked={item.done}>{item.done ? '✓' : ''}</CheckCircle>
+              </ItemCard>
+            ))}
+          </ItemList>
+        </ContentContainer>
       </PageContainer>
       <BottomNavigation />
     </>

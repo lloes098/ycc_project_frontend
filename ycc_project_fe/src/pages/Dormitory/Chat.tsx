@@ -15,9 +15,21 @@ const PageContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   max-width: 768px;
-  user-select: none;
   margin: 0 auto;
   padding-bottom: 60px;
+`;
+
+const WhiteContainer = styled.div`
+  background-color: #fff;
+  margin-bottom: 10px;
+`;
+
+const ContentContainer = styled.div`
+  background-color: #F5F5F5;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Header = styled.div`
@@ -27,6 +39,7 @@ const Header = styled.div`
   padding: 8px 16px;
   border-bottom: 1px solid #ddd;
   gap: 12px;
+  background-color: #fff;
 `;
 
 const HeaderTitle = styled.span`
@@ -140,25 +153,29 @@ const Chat: React.FC = () => {
   return (
     <>
       <PageContainer>
-        <Header>
-          <BackButton />
-          <HeaderTitle>채팅</HeaderTitle>
-        </Header>
+        <WhiteContainer>
+          <Header>
+            <BackButton />
+            <HeaderTitle>채팅</HeaderTitle>
+          </Header>
+        </WhiteContainer>
 
-        <InfoBox>
-          <strong>룸메이트들과 대화해요</strong>
-          <br />
-          인사를 나누고 이사 일정, 생활습관 등을 조율해요
-        </InfoBox>
+        <ContentContainer>
+          <InfoBox>
+            <strong>룸메이트들과 대화해요</strong>
+            <br />
+            인사를 나누고 이사 일정, 생활습관 등을 조율해요
+          </InfoBox>
 
-        <ChatBox>
-          {messages.map((msg) => (
-            <MessageBubble key={msg.id} sender={msg.sender}>
-              {msg.content}
-            </MessageBubble>
-          ))}
-          <div ref={bottomRef} /> {/* ✅ 항상 아래로 스크롤 */}
-        </ChatBox>
+          <ChatBox>
+            {messages.map((msg) => (
+              <MessageBubble key={msg.id} sender={msg.sender}>
+                {msg.content}
+              </MessageBubble>
+            ))}
+            <div ref={bottomRef} />
+          </ChatBox>
+        </ContentContainer>
 
         <InputWrapper>
           <TextInput

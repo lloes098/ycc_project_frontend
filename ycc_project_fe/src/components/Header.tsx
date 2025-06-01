@@ -5,6 +5,7 @@ import BackButton from './BackButton';
 const HeaderWrapper = styled.div`
   width: 100%;
   background-color: #fff;
+  margin-bottom: 10px;
 `;
 
 const HeaderContainer = styled.div`
@@ -15,6 +16,7 @@ const HeaderContainer = styled.div`
   position: relative;
   max-width: 768px;
   margin: 0 auto;
+  user-select: none;
 `;
 
 const HeaderTitle = styled.span`

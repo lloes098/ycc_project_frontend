@@ -20,10 +20,17 @@ const sampleUsers: Assignment[] = [
 ];
 
 const PageContainer = styled.div`
-  max-width: 768px;
-  margin: 0 auto;
   padding-bottom: 100px;
-  user-select: none;
+`;
+
+const WhiteContainer = styled.div`
+  background-color: #fff;
+  margin-bottom: 10px;
+`;
+
+const ContentContainer = styled.div`
+  background-color: #F5F5F5;
+  padding: 20px;
 `;
 
 const Header = styled.div`
@@ -32,6 +39,7 @@ const Header = styled.div`
   padding: 8px 16px;
   border-bottom: 1px solid #ddd;
   gap: 12px;
+  background-color: #fff;
 `;
 
 const HeaderTitle = styled.span`
@@ -157,58 +165,62 @@ const Location: React.FC = () => {
   return (
     <>
       <PageContainer>
-        <Header>
-          <BackButton />
-          <HeaderTitle>위치 선정</HeaderTitle>
-        </Header>
+        <WhiteContainer>
+          <Header>
+            <BackButton />
+            <HeaderTitle>위치 선정</HeaderTitle>
+          </Header>
 
-        <TabBar>
-          <Tab active={tab === 'bed'} onClick={() => setTab('bed')}>침대</Tab>
-          <Tab active={tab === 'desk'} onClick={() => setTab('desk')}>책상</Tab>
-        </TabBar>
+          <TabBar>
+            <Tab active={tab === 'bed'} onClick={() => setTab('bed')}>침대</Tab>
+            <Tab active={tab === 'desk'} onClick={() => setTab('desk')}>책상</Tab>
+          </TabBar>
+        </WhiteContainer>
 
-        {!selected ? (
-          <>
-            <Box>
-              <UserRow>
-                {assignments.map((user) => (
-                  <Name key={user.userId} highlight={user.isSelf}>
-                    {user.name}
-                  </Name>
-                ))}
-              </UserRow>
-              
-              <LadderRenderer
-                rows={rowCount}
-                columns={assignments.length}
-                ladder={ladderData}
-              />
+        <ContentContainer>
+          {!selected ? (
+            <>
+              <Box>
+                <UserRow>
+                  {assignments.map((user) => (
+                    <Name key={user.userId} highlight={user.isSelf}>
+                      {user.name}
+                    </Name>
+                  ))}
+                </UserRow>
+                
+                <LadderRenderer
+                  rows={rowCount}
+                  columns={assignments.length}
+                  ladder={ladderData}
+                />
 
-              <UserRow>
-                {[1, 2, 3].map((n) => (
-                  <BedLabel key={n}>{n}번 {tab === 'bed' ? '침대' : '책상'}</BedLabel>
-                ))}
-              </UserRow>
-            </Box>
-            <Button onClick={shuffle}>
-              {tab === 'bed' ? '침대 위치 사다리 타기' : '책상 위치 사다리 타기'}
-            </Button>
-          </>
-        ) : (
-          <>
-            <ResultBox>
-              <strong>위치 선정 결과</strong>
-              <ul>
-                {assignments.map((user) => (
-                  <li key={user.userId}>
-                    {user.name} — {user.bedNumber}번 침대 / {user.deskNumber}번 책상
-                  </li>
-                ))}
-              </ul>
-            </ResultBox>
-            <Button onClick={reset}>다시 선정하기</Button>
-          </>
-        )}
+                <UserRow>
+                  {[1, 2, 3].map((n) => (
+                    <BedLabel key={n}>{n}번 {tab === 'bed' ? '침대' : '책상'}</BedLabel>
+                  ))}
+                </UserRow>
+              </Box>
+              <Button onClick={shuffle}>
+                {tab === 'bed' ? '침대 위치 사다리 타기' : '책상 위치 사다리 타기'}
+              </Button>
+            </>
+          ) : (
+            <>
+              <ResultBox>
+                <strong>위치 선정 결과</strong>
+                <ul>
+                  {assignments.map((user) => (
+                    <li key={user.userId}>
+                      {user.name} — {user.bedNumber}번 침대 / {user.deskNumber}번 책상
+                    </li>
+                  ))}
+                </ul>
+              </ResultBox>
+              <Button onClick={reset}>다시 선정하기</Button>
+            </>
+          )}
+        </ContentContainer>
       </PageContainer>
       <BottomNavigation />
     </>
