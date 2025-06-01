@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
 import './Facility.css';
@@ -61,6 +61,10 @@ const internationalFacilities: Facility[] = [
 const FacilityList: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'sinchon' | 'international'>('sinchon');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // 👈 여기 추가
+  }, []);
   
   const handleFacilityClick = (facilityId: string) => {
     navigate(`/facility/${facilityId}`);

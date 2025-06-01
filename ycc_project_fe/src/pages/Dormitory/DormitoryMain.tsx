@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../components/BottomNavigation';
@@ -101,6 +101,9 @@ const CardDescription = styled.p`
 
 const DormitoryMain: React.FC = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0); // 👈 여기 추가
+  }, []);
 
   // 👉 이 값은 추후 백엔드에서 받아오게 변경
   const isAssigned = false;

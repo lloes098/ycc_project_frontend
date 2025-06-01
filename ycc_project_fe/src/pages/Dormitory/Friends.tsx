@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
 import './Friends.css';
@@ -11,6 +11,9 @@ interface Friend {
 }
 
 const Friends: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // 👈 여기 추가
+  }, []);
   const [selectedBuilding, setSelectedBuilding] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [friends, setFriends] = useState<Friend[]>([

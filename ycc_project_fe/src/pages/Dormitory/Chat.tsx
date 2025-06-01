@@ -109,6 +109,9 @@ const SendButton = styled.button`
 
 const Chat: React.FC = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0); // 👈 여기 추가
+  }, []);
 
   const [messages, setMessages] = useState<Message[]>([
     { id: 1, sender: 'roommate', content: '안녕하세요' },

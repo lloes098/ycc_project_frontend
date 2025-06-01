@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
@@ -75,6 +75,9 @@ const CopyButton = styled.button`
 
 const Address: React.FC = () => {
   const [copySuccess, setCopySuccess] = useState(false);
+  useEffect(() => {
+    window.scrollTo(0, 0); // 👈 여기 추가
+  }, []);
   const address = "인천 연수구 송도과학로 85 {동} {호수}";
 
   const handleCopy = async () => {
