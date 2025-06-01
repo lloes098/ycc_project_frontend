@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../../components/BackButton';
+import Header from '../../components/Header';
 import BottomNavigation from '../../components/BottomNavigation';
 
 const PageContainer = styled.div`
@@ -9,7 +10,7 @@ const PageContainer = styled.div`
   padding-bottom: 80px;
 `;
 
-const Header = styled.div`
+const AddressHeader = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 30px;
@@ -85,12 +86,8 @@ const Address: React.FC = () => {
 
   return (
     <>
+      <Header title="주소" />
       <PageContainer>
-        <Header>
-          <BackButton />
-          <Title>주소</Title>
-        </Header>
-        
         <AddressSection>
           <AddressIcon>📦</AddressIcon>
           <AddressTitle>내 기숙사 주소를 조회하고 복사해요</AddressTitle>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import BackButton from '../../components/BackButton';
 import BottomNavigation from '../../components/BottomNavigation';
 
 const PageContainer = styled.div`
@@ -9,10 +10,17 @@ const PageContainer = styled.div`
   padding-bottom: 80px;
 `;
 
-const Title = styled.h1`
-  padding: 16px;
-  font-size: 20px;
-  font-weight: bold;
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+  gap: 12px;
+`;
+
+const HeaderTitle = styled.span`
+  font-size: 18px;
+  font-weight: 600;
 `;
 
 const Card = styled.div`
@@ -41,14 +49,6 @@ const Icon = styled.div`
   margin-bottom: 6px;
 `;
 
-const BackButton = styled.button`
-  margin-right: 12px;
-  font-size: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-`;
-
 const Arrow = styled.div`
   font-size: 18px;
   color: #ccc;
@@ -60,11 +60,10 @@ const RoommateSpace: React.FC = () => {
   return (
     <>
       <PageContainer>
-        <Title>
-          <BackButton onClick={() => navigate(-1)}>←</BackButton>
-          룸메이트 공간
-        </Title>
-        
+        <Header>
+          <BackButton />
+          <HeaderTitle>룸메이트 공간</HeaderTitle>
+        </Header>
 
         <Card onClick={() => navigate('/chat')}>
           <Info>
@@ -78,7 +77,7 @@ const RoommateSpace: React.FC = () => {
         <Card onClick={() => navigate('/location')}>
           <Info>
             <Icon>🛏️</Icon>
-            <strong>위치 결정</strong>
+            <strong>위치 선정</strong>
             <span>침대·책상 위치를 사다리타기로 결정해요</span>
           </Info>
           <Arrow>›</Arrow>
@@ -86,8 +85,8 @@ const RoommateSpace: React.FC = () => {
 
         <Card onClick={() => navigate('/checklist')}>
           <Info>
-            <Icon>📦</Icon>
-            <strong>비품 논의</strong>
+            <Icon>🧳</Icon>
+            <strong>비품 준비</strong>
             <span>필수 비품 준비를 논의해요</span>
           </Info>
           <Arrow>›</Arrow>

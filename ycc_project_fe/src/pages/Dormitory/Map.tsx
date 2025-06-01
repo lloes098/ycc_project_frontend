@@ -1,36 +1,26 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../components/Header';
 import BottomNavigation from '../../components/BottomNavigation';
 
 const PageContainer = styled.div`
-  padding: 20px;
   padding-bottom: 80px;
 `;
 
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+const WhiteContainer = styled.div`
+  background-color: #fff;
+  margin-bottom: 10px;
 `;
 
-const BackButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 0;
-  margin-right: 16px;
-`;
-
-const Title = styled.h1`
-  font-size: 20px;
-  font-weight: bold;
+const ContentContainer = styled.div`
+  background-color: #F5F5F5;
+  padding: 20px;
 `;
 
 const TabContainer = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   border-bottom: 1px solid #e0e0e0;
 `;
 
@@ -93,52 +83,35 @@ const Map: React.FC = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('신촌');
 
-  const legendItems = [
-    { label: '자유관', color: '#4A4A4A' },
-    { label: '진리관', color: '#4A4A4A' },
-    { label: '중앙관', color: '#4A4A4A' },
-    { label: '송도학사', color: '#FFB6B6' }
-  ];
-
   return (
     <>
+      <Header title="기숙사 지도" />
       <PageContainer>
-        <Header>
-          <BackButton onClick={() => navigate(-1)}>←</BackButton>
-          <Title>기숙사 지도</Title>
-        </Header>
+        <WhiteContainer>
+          <TabContainer>
+            <Tab 
+              active={activeTab === '신촌'} 
+              onClick={() => setActiveTab('신촌')}
+            >
+              신촌캠퍼스
+            </Tab>
+            <Tab 
+              active={activeTab === '국제'} 
+              onClick={() => setActiveTab('국제')}
+            >
+              국제캠퍼스
+            </Tab>
+          </TabContainer>
+        </WhiteContainer>
 
-        <TabContainer>
-          <Tab 
-            active={activeTab === '신촌'} 
-            onClick={() => setActiveTab('신촌')}
-          >
-            신촌캠퍼스
-          </Tab>
-          <Tab 
-            active={activeTab === '국제'} 
-            onClick={() => setActiveTab('국제')}
-          >
-            국제캠퍼스
-          </Tab>
-        </TabContainer>
-
-        <MapContainer>
-          <MapImage 
-            src={activeTab === '신촌' ? '/images/sinchon-map.png' : '/images/international-map.png'} 
-            alt={`${activeTab}캠퍼스 지도`}
-          />
-        </MapContainer>
-
-        <MapLegend>
-          <LegendTitle>건물 정보</LegendTitle>
-          {legendItems.map((item, index) => (
-            <LegendItem key={index}>
-              <LegendColor color={item.color} />
-              {item.label}
-            </LegendItem>
-          ))}
-        </MapLegend>
+        <ContentContainer>
+          <MapContainer>
+            <MapImage 
+              src={activeTab === '신촌' ? '/images/sinchon-map.png' : '/images/international-map.png'} 
+              alt={`${activeTab}캠퍼스 지도`}
+            />
+          </MapContainer>
+        </ContentContainer>
       </PageContainer>
       <BottomNavigation />
     </>

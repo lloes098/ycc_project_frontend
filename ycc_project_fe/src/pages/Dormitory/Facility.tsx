@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import BackButton from '../../components/BackButton';
-import './Facility.css';
+import styled from 'styled-components';
+import Header from '../../components/Header';
+import BottomNavigation from '../../components/BottomNavigation';
 
 interface Facility {
   id: string;
@@ -10,10 +11,83 @@ interface Facility {
   hours: string;
 }
 
+const PageContainer = styled.div`
+  padding-bottom: 80px;
+`;
+
+const WhiteContainer = styled.div`
+  background-color: #fff;
+  margin-bottom: 10px;
+`;
+
+const FacilityListContainer = styled.div`
+  background-color: #F5F5F5;
+  padding: 20px;
+`;
+
+const TabContainer = styled.div`
+  display: flex;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e0e0e0;
+`;
+
+const Tab = styled.div<{ active: boolean }>`
+  flex: 1;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 2px solid ${props => props.active ? '#007AFF' : 'transparent'};
+  color: ${props => props.active ? '#007AFF' : '#666'};
+  font-size: 16px;
+  font-weight: ${props => props.active ? 'bold' : 'normal'};
+  transition: all 0.2s;
+`;
+
+const FacilityCard = styled.div`
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+  }
+`;
+
+const FacilityName = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+`;
+
+const FacilityType = styled.div`
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+`;
+
+const FacilityHours = styled.div`
+  font-size: 14px;
+  color: #666;
+`;
+
+const ArrowIcon = styled.span`
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #007AFF;
+`;
+
 const sinchonFacilities: Facility[] = [
   {
     id: 'nanumsamm-sinchon',
-    name: '나눔샘',
+    name: '나눌샘',
     type: '학식',
     hours: '11:00 - 19:00'
   },
@@ -23,18 +97,6 @@ const sinchonFacilities: Facility[] = [
     type: '카페',
     hours: '08:00 - 22:00'
   },
-  {
-    id: 'laundry-sinchon',
-    name: '세탁실',
-    type: '편의시설',
-    hours: '24시간'
-  },
-  {
-    id: 'gym-sinchon',
-    name: '헬스장',
-    type: '운동시설',
-    hours: '06:00 - 23:00'
-  }
 ];
 
 const internationalFacilities: Facility[] = [
@@ -67,40 +129,42 @@ const FacilityList: React.FC = () => {
   };
 
   return (
-    <div className="facility-container">
-      <div className="facility-header">
-        <BackButton />
-        <h1 className="facility-title">편의시설</h1>
-      </div>
-      
-      <div className="tab-container">
-        <div 
-          className={`tab ${activeTab === 'sinchon' ? 'active' : ''}`}
-          onClick={() => setActiveTab('sinchon')}
-        >
-          신촌캠퍼스
-        </div>
-        <div 
-          className={`tab ${activeTab === 'international' ? 'active' : ''}`}
-          onClick={() => setActiveTab('international')}
-        >
-          국제캠퍼스
-        </div>
-      </div>
+    <>
+      <Header title="편의시설" />
+      <PageContainer>
+        <WhiteContainer>
+          <TabContainer>
+            <Tab 
+              active={activeTab === 'sinchon'} 
+              onClick={() => setActiveTab('sinchon')}
+            >
+              신촌캠퍼스
+            </Tab>
+            <Tab 
+              active={activeTab === 'international'} 
+              onClick={() => setActiveTab('international')}
+            >
+              국제캠퍼스
+            </Tab>
+          </TabContainer>
+        </WhiteContainer>
 
-      {(activeTab === 'sinchon' ? sinchonFacilities : internationalFacilities).map(facility => (
-        <div 
-          className="facility-card" 
-          key={facility.id}
-          onClick={() => handleFacilityClick(facility.id)}
-        >
-          <div className="facility-name">{facility.name}</div>
-          <div className="facility-type">{facility.type}</div>
-          <div className="facility-hours">{facility.hours}</div>
-          <span className="arrow-icon">→</span>
-        </div>
-      ))}
-    </div>
+        <FacilityListContainer>
+          {(activeTab === 'sinchon' ? sinchonFacilities : internationalFacilities).map(facility => (
+            <FacilityCard 
+              key={facility.id}
+              onClick={() => handleFacilityClick(facility.id)}
+            >
+              <FacilityName>{facility.name}</FacilityName>
+              <FacilityType>{facility.type}</FacilityType>
+              <FacilityHours>{facility.hours}</FacilityHours>
+              <ArrowIcon>→</ArrowIcon>
+            </FacilityCard>
+          ))}
+        </FacilityListContainer>
+      </PageContainer>
+      <BottomNavigation />
+    </>
   );
 };
 

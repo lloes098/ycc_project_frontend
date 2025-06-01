@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../components/Header';
 import './Preview.css';
 
 const Preview: React.FC = () => {
@@ -25,10 +26,7 @@ const Preview: React.FC = () => {
 
   return (
     <div className="preview-container">
-      <div className="preview-header">
-        <span className="back-button" onClick={handleBack}>←</span>
-        <h1 className="preview-title">방 미리보기</h1>
-      </div>
+      <Header title="방 미리보기" />
 
       <div className="preview-content">
         <div className="room-preview">

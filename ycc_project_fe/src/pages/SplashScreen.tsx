@@ -21,7 +21,7 @@ const SplashScreen = () => {
       </div>
       <div className="splash-center">
         {/* 로고 이미지는 public 폴더에 logo.png로 넣어주세요 */}
-        <img src="/Yonmate.svg" alt="Yonmate Logo" className="splash-logo" />
+        <img src="/assets/Yonmate_P.png" alt="Yonmate Logo" className="splash-logo" />
         <div className="splash-korean">연세대 기숙사 올인원 서비스</div>
         <div className="splash-title">Yonmate</div>
       </div>

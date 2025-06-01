@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../components/BottomNavigation';
-import BackButton from '../../components/BackButton';
 
 const PageContainer = styled.div`
   padding: 20px;
@@ -65,40 +64,40 @@ const HelperMain: React.FC = () => {
 
   const services = [
     {
-      icon: '📦',
-      title: '주소',
-      desc: '내 기숙사 주소를 조회하고 복사해요',
-      path: '/address'
+      icon: "📦",
+      title: "주소",
+      description: "내 기숙사 주소를 조회하고 복사해요",
+      path: "/address"
     },
     {
-      icon: '🗺️',
-      title: '기숙사 지도',
-      desc: '기숙사 지도를 살펴봐요',
-      path: '/map'
+      icon: "🗺️",
+      title: "기숙사 지도",
+      description: "기숙사 지도를 살펴봐요",
+      path: "/map"
     },
     {
-      icon: '📍',
-      title: '편의시설',
-      desc: '주요 편의 시설 정보를 조회해요',
-      path: '/facility'
+      icon: "📍",
+      title: "편의시설",
+      description: "주요 편의 시설 정보를 조회해요",
+      path: "/facility"
     },
     {
-      icon: '⏰',
-      title: '소요시간',
-      desc: '강의실까지 예상 소요시간을 조회해요',
-      path: '/time'
+      icon: "🕖",
+      title: "소요시간",
+      description: "강의실까지 예상 소요시간을 조회해요",
+      path: "/time"
     },
     {
-      icon: '📘',
-      title: '방 미리보기',
-      desc: '미리 내 방을 알아봐요',
-      path: '/preview'
+      icon: "🚪",
+      title: "방 미리보기",
+      description: "미리 내 방을 알아봐요",
+      path: "/preview"
     },
     {
-      icon: '👥',
-      title: '내 친구의 방',
-      desc: '내 친구의 방 정보를 조회해요',
-      path: '/friends'
+      icon: "👥",
+      title: "내 친구의 방",
+      description: "내 친구의 방 정보를 조회해요",
+      path: "/friends"
     }
   ];
 
@@ -106,15 +105,13 @@ const HelperMain: React.FC = () => {
     <>
       <PageContainer>
         <Title>기숙사 생활 도우미</Title>
-        <BackButton />
-        <SubTitle>기숙사 도우미</SubTitle>
 
         <GridContainer>
           {services.map((s, idx) => (
             <Card key={idx} onClick={() => navigate(s.path)}>
               <CardIcon>{s.icon}</CardIcon>
               <CardTitle>{s.title}</CardTitle>
-              <CardDesc>{s.desc}</CardDesc>
+              <CardDesc>{s.description}</CardDesc>
             </Card>
           ))}
         </GridContainer>

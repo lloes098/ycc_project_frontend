@@ -1,6 +1,54 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './FacilityDetail.css';
+import styled from 'styled-components';
+import Header from '../../components/Header';
+import BottomNavigation from '../../components/BottomNavigation';
+
+const PageContainer = styled.div`
+  max-width: 768px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+  background-color: #fff;
+`;
+
+const ImageContainer = styled.div`
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  margin-bottom: 24px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const InfoContainer = styled.div`
+  padding: 0 16px;
+`;
+
+const InfoRow = styled.div`
+  display: flex;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+const InfoLabel = styled.div`
+  width: 100px;
+  color: #666;
+  font-size: 16px;
+`;
+
+const InfoValue = styled.div`
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+`;
 
 interface FacilityDetailInfo {
   id: number;
@@ -37,45 +85,39 @@ const facilityDetails: Record<string, FacilityDetailInfo> = {
 const FacilityDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  
   const facility = id ? facilityDetails[id] : null;
-
-  const handleBack = () => {
-    navigate(-1);
-  };
 
   if (!facility) {
     return <div>시설을 찾을 수 없습니다.</div>;
   }
 
   return (
-    <div className="facility-detail-container">
-      <div className="facility-detail-header">
-        <span className="back-button" onClick={handleBack}>←</span>
-        <h1 className="facility-detail-title">{facility.name}</h1>
-      </div>
+    <>
+      <Header title={facility.name} />
+      <PageContainer>
+        <ImageContainer>
+          <img src={facility.image} alt={facility.name} />
+        </ImageContainer>
 
-      <div className="facility-detail-image">
-        <img src={facility.image} alt={facility.name} />
-      </div>
-
-      <div className="facility-detail-info">
-        <div className="info-row">
-          <div className="info-label">구분</div>
-          <div className="info-value">{facility.type}</div>
-        </div>
-        
-        <div className="info-row">
-          <div className="info-label">운영시간</div>
-          <div className="info-value">{facility.hours}</div>
-        </div>
-        
-        <div className="info-row">
-          <div className="info-label">비용</div>
-          <div className="info-value">{facility.price}</div>
-        </div>
-      </div>
-    </div>
+        <InfoContainer>
+          <InfoRow>
+            <InfoLabel>구분</InfoLabel>
+            <InfoValue>{facility.type}</InfoValue>
+          </InfoRow>
+          
+          <InfoRow>
+            <InfoLabel>운영시간</InfoLabel>
+            <InfoValue>{facility.hours}</InfoValue>
+          </InfoRow>
+          
+          <InfoRow>
+            <InfoLabel>비용</InfoLabel>
+            <InfoValue>{facility.price}</InfoValue>
+          </InfoRow>
+        </InfoContainer>
+      </PageContainer>
+      <BottomNavigation />
+    </>
   );
 };
 
